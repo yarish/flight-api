@@ -27,8 +27,18 @@ A RESTful API built using Spring Boot to search for available flights between gi
 
 #### Request
 
+Swagger UI : http://localhost:8080/swagger-ui/index.html 
+
 ```
-GET /flights?origin=AMS&destination=DEL&sortFields=price,departureTime&sortDirections=asc,desc&page=0&size=10
+GET /flights?origin=AMS&destination=DEL
+```
+
+```
+GET /flights?origin=AMS&destination=DEL&page=1&size=10
+```
+
+```
+GET /flights?origin=AMS&destination=DEL&sortFields=price,departureTime&sortDirections=asc,desc&page=1&size=10
 ```
 
 #### Parameters
@@ -53,6 +63,7 @@ Returns a JSON object containing the flight data and pagination information.
 Add the following to your `pom.xml`:
 
 ```xml
+<dependencies>
 <!-- Spring Web -->
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -69,6 +80,7 @@ Add the following to your `pom.xml`:
     <artifactId>h2</artifactId>
     <scope>runtime</scope>
 </dependency>
+</dependencies>
 ```
 
 ### Author contact details

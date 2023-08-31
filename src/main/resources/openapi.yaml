@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: Flight Search API
+  version: "1.0"
+paths:
+  /flight/search:
+    get:
+      summary: Search flights
+      parameters:
+        - name: origin
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: destination
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: sortFields
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: sortDirections
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              enum: [asc, desc]
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of flights
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Flight'
+        '400':
+          description: Bad Request
+components:
+  schemas:
+    Flight:
+      type: object
+      properties:
+        flightNumber:
+          type: string
+        origin:
+          type: string
+        destination:
+          type: string
+        departureTime:
+          type: string
+        arrivalTime:
+          type: string
+        price:
+          type: integer
