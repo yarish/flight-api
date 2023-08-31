@@ -48,7 +48,6 @@ public class FlightSearchController {
         Sort sort = Sort.by(orders);
         Pageable pageable = PageRequest.of(page.orElse(0), size.orElse(10), sort);
         List<Flight> flights = flightService.searchFlights(origin, destination, pageable);
-//        List<Flight> flights = flightService.searchFlights(origin, destination);
         return new ResponseEntity<>(flights, HttpStatus.OK);
     }
 }
